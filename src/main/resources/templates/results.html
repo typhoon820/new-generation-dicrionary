@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Results</title>
+
+    <link href="https://fonts.googleapis.com/css?family=Dosis" rel="stylesheet"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="../static/css/style.css" th:href="@{../css/style.css}"/>
+</head>
+<body>
+<form th:action="@{/home}" method="get">
+    <button class="btn btn-md btn-info btn-block" type="Submit">Profile
+        <span class="glyphicon glyphicon-home"></span>
+    </button>
+</form>
+<div class="container">
+    <div class="row">
+        <div class="col col-md-12">
+            <h4 th:text="${result}"></h4>
+            <span th:text="'You have answered ' + ${correctAnswers} + ' questions out of ' + ${totalQuestions}"></span>
+        </div>
+    </div>
+    <table class="table table-hover">
+        <tr>
+            <th scope="col">Question №</th>
+            <th scope="col">Given word</th>
+            <th scope="col">Correct answer</th>
+            <th scope="col">Your answer</th>
+        </tr>
+        <tr th:each="q, iter:${questionList}" th:class="${q.correct!=q.chosen}?'danger'" >
+            <td th:text="${iter.index}+1"></td>
+            <td th:text="${q.questionWord}"></td>
+            <td th:text="${q.correct}"></td>
+            <td th:text="${q.chosen}"></td>
+        </tr>
+    </table>
+</div>
+
+</body>
+</html>

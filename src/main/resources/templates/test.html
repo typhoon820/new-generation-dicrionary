@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Reader</title>
+
+    <link href="https://fonts.googleapis.com/css?family=Dosis" rel="stylesheet"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="../static/css/style.css" th:href="@{../css/style.css}"/>
+</head>
+<body>
+
+<div id="spinner" class="spinner" style="display:none;">
+    <img id="img-spinner" th:src="@{/img/loader.gif}" alt="Loading"/>
+</div>
+<form th:action="@{/home}" method="get">
+    <button class="btn btn-md btn-info btn-block" type="Submit">Profile
+        <span class="glyphicon glyphicon-home"></span>
+    </button>
+</form>
+<h2 align="center">New generation dictionary</h2>
+<div class="container">
+    <div class="row">
+        <div class="col-md-6">
+            <form autocomplete="off" action="#" th:action="@{/translate}"
+                  th:object="${toTranslate}" method="post" class="form-horizontal"
+                  role="form">
+
+                <div class="form-group">
+                    <textarea th:text="${inputText}" th:field="*{text}" name="intext" id="intext" cols="70" rows="22">
+                    </textarea>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-sm-9">
+                        <button type="submit" id="button-upload" class="btn btn-primary btn-block">Translate</button>
+                    </div>
+                </div>
+
+            </form>
+        </div>
+        <div class="tbcol col-md-6">
+            <table class="table table-hover">
+                <tr>
+                    <th>word</th> <th>translation</th>
+                </tr>
+                    <tr th:each="w : ${dictionary}">
+                        <td th:text="${w.word}">&nbsp;</td>
+                        <td th:text="${w.translation}">&nbsp;</td>
+                    </tr>
+            </table>
+        </div>
+
+        <h2 th:text="${result}"></h2>
+    </div>
+</div>
+<script type="text/javascript">
+    $(document).ready(function(){
+        $('#button-upload').click(function() {
+            $('#spinner').show();
+        });
+    });
+</script>
+</body>
+</html>

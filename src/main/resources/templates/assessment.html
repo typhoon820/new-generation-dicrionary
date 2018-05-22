@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Test</title>
+
+    <link href="https://fonts.googleapis.com/css?family=Dosis" rel="stylesheet"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="../static/css/style.css" th:href="@{../css/style.css}"/>
+</head>
+<body>
+<form th:action="@{/home}" method="get">
+    <button class="btn btn-md btn-info btn-block" type="Submit">Profile
+        <span class="glyphicon glyphicon-home"></span>
+    </button>
+</form>
+<div class="container">
+    <form th:action="@{/test}" method="post" th:object="${question}">
+        <div class="row">
+            <div class="col col-6 text-center">
+                <h4>Choose the correct translation of the given word</h4>
+                <label th:text="${question.questionWord}" >example</label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col col-6">
+                <ul>
+                    <li th:each="radiovalue: ${question.answers}">
+                        <input type="radio" th:value="${radiovalue}" th:field="*{chosen}" required="required" />
+                        <label th:for="${#ids.prev('chosen')}" th:text="${radiovalue}"></label>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="row">
+            <div class="btnCol col col-md-12 text-center">
+                <button class="nextBtn btn btn-md btn-info" type="submit">Next</button>
+                <div class="row">
+                    <div class="col col-md-10"></div>
+                    <div class="col col-md-2">
+                        <span class="counter" th:text="${currentQuestion} + ' / ' + ${totalQuestions}"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+</body>
+</html>

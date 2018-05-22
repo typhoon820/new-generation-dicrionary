@@ -1,0 +1,49 @@
+.tbcol{
+    overflow: auto;
+    height: 500px;
+}
+.tb{
+    font-size: 25pt;
+}
+.spinner {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    margin-left: -50px; /* half width of the spinner gif */
+    margin-top: -50px; /* half height of the spinner gif */
+    text-align:center;
+    z-index:1234;
+    overflow: auto;
+    width: 100px; /* width of the spinner gif */
+    height: 102px; /*hight of the spinner gif +2px to fix IE8 issue */
+}
+.counter{
+}
+
+/*.nextBtn{*/
+    /*margin: auto;*/
+    /*display: block;*/
+/*}*/
+/*input[type="date"]:before {*/
+    /*content: attr(placeholder) !important;*/
+    /*color: #aaa;*/
+    /*margin-right: 0.5em;*/
+/*}*/
+/*input[type="date"]:focus:before,*/
+/*input[type="date"]:valid:before {*/
+    /*content: "";*/
+/*}*/
+
+.dateclass {
+    width: 100%;
+}
+
+.dateclass.placeholderclass::before {
+    width: 100%;
+    content: attr(placeholder);
+}
+
+.dateclass.placeholderclass:hover::before {
+    width: 0%;
+    content: "";
+}

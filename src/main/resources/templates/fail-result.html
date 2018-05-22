@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Oops!</title>
+
+    <link href="https://fonts.googleapis.com/css?family=Dosis" rel="stylesheet"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="../static/css/style.css" th:href="@{../css/style.css}"/>
+</head>
+<body>
+<div class="container">
+    <div class="row">
+        <h2 align="center" th:text="${message}"> &nbsp;
+        </h2>
+        <div class="col col-md-6 col-lg-6 text-right">
+            <form th:action="@{/test}" method="get">
+                <button class="btn btn-md btn-success" type="Submit" style="margin-top: 50px">Go for it!
+                    <span class="glyphicon glyphicon-education"></span>
+                </button>
+            </form>
+        </div>
+        <div class="col col-md-6 col-lg-6 text-left">
+            <form th:action="@{/home}" method="get">
+                <button class="btn btn-md btn-info" type="Submit" style="margin-top: 50px">Profile
+                    <span class="glyphicon glyphicon-home"></span>
+                </button>
+            </form>
+        </div>
+    </div>
+
+</div>
+</body>
+</html>
